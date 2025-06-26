@@ -18,6 +18,8 @@ export const config = {
 const parseForm = (req: NextRequest): Promise<{ fields: Fields; files: Files }> => {
   return new Promise((resolve, reject) => {
     const form = new IncomingForm();
+    // The formidable `parse` method expects a Node.js `IncomingMessage` object.
+    // We cast the NextRequest to `any` as a workaround.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     form.parse(req as any, (err, fields, files) => {
       if (err) return reject(err);

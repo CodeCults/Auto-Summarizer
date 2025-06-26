@@ -52,8 +52,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(evaluationResult);
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Evaluation API Error:', error);
-    return NextResponse.json({ error: error.message || 'An unknown error occurred.' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred.';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 } 

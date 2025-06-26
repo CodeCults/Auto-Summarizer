@@ -78,8 +78,9 @@ export default function Home() {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'An error occurred.');
       setSummaryData(data);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -104,8 +105,9 @@ export default function Home() {
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || 'Evaluation failed.');
         setEvaluationResult(data);
-    } catch (err: any) {
-        setError(err.message);
+    } catch (err) {
+        const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';
+        setError(errorMessage);
     } finally {
         setIsEvaluating(false);
     }

@@ -2,9 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { extractTextFromFile } from '@/lib/fileParser';
 import { extractTextFromUrl } from '@/lib/urlScraper';
 import OpenAI from 'openai';
-import { IncomingForm } from 'formidable';
+import { IncomingForm, Fields, Files } from 'formidable';
 import { promises as fs } from 'fs';
-import { File } from 'formidable';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -16,7 +15,7 @@ export const config = {
   },
 };
 
-const parseForm = (req: NextRequest): Promise<{ fields: any; files: any }> => {
+const parseForm = (req: NextRequest): Promise<{ fields: Fields; files: Files }> => {
   return new Promise((resolve, reject) => {
     const form = new IncomingForm();
     form.parse(req as any, (err, fields, files) => {
@@ -68,7 +67,7 @@ export async function POST(req: NextRequest) {
         const mimetype = fileInput.mimetype || 'application/octet-stream';
 
         const fileObject = new global.File([fileContent], originalFilename, { type: mimetype });
-        const fileText = await extractTextFromFile(fileObject as any);
+        const fileText = await extractTextFromFile(fileObject);
         combinedText += fileText + '\\n\\n';
         await fs.unlink(tempFilePath);
     }
@@ -145,8 +144,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(finalResponse);
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('API Error:', error);
-    return NextResponse.json({ error: error.message || 'An unknown error occurred.' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred.';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 } 

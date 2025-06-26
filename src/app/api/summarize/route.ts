@@ -18,6 +18,7 @@ export const config = {
 const parseForm = (req: NextRequest): Promise<{ fields: Fields; files: Files }> => {
   return new Promise((resolve, reject) => {
     const form = new IncomingForm();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     form.parse(req as any, (err, fields, files) => {
       if (err) return reject(err);
       resolve({ fields, files });

@@ -5,6 +5,8 @@ import OpenAI from 'openai';
 import { IncomingForm, Fields, Files } from 'formidable';
 import { promises as fs } from 'fs';
 
+export const runtime = 'nodejs';
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });

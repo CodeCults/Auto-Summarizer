@@ -57,7 +57,7 @@ Return the output in a clean, valid JSON object with the following structure:
     let responseJson;
     try {
         responseJson = JSON.parse(responseJsonString);
-    } catch (parseError) {
+    } catch {
         console.error('Failed to parse JSON response from AI for evaluation:', responseJsonString);
         throw new Error('The AI returned an evaluation in an invalid format.');
     }

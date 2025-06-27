@@ -86,7 +86,7 @@ The JSON object should have the following structure:
     let responseJson;
     try {
         responseJson = JSON.parse(responseJsonString);
-    } catch (parseError) {
+    } catch {
         console.error('Failed to parse JSON response from AI:', responseJsonString);
         throw new Error('The AI returned a response in an invalid format.');
     }

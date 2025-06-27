@@ -75,8 +75,15 @@ export default function Home() {
         method: 'POST',
         body: formData,
       });
+      
+      const contentType = response.headers.get('content-type');
+      if (!response.ok || !contentType || !contentType.includes('application/json')) {
+        const errorText = await response.text();
+        console.error('Server response:', errorText);
+        throw new Error(response.statusText || 'An error occurred. The server sent an invalid response.');
+      }
+
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'An error occurred.');
       setSummaryData(data);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';
@@ -102,8 +109,15 @@ export default function Home() {
                 userSummary: userSummary,
             }),
         });
+
+        const contentType = response.headers.get('content-type');
+        if (!response.ok || !contentType || !contentType.includes('application/json')) {
+            const errorText = await response.text();
+            console.error('Server response:', errorText);
+            throw new Error(response.statusText || 'Evaluation failed. The server sent an invalid response.');
+        }
+
         const data = await response.json();
-        if (!response.ok) throw new Error(data.error || 'Evaluation failed.');
         setEvaluationResult(data);
     } catch (err) {
         const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';

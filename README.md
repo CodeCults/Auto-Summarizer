@@ -1,6 +1,6 @@
 # 🧠 Auto-Summarizer
 
-AI destekli bir metin özetleme platformu. Öğrenciler, araştırmacılar ve içerik üreticileri için uzun metinleri saniyeler içinde anlamlı özetlere dönüştürür. GROQ ve LLaMA3 entegrasyonu ile çalışır.
+An AI-powered text summarization platform. It transforms long texts into meaningful summaries in seconds for students, researchers, and content creators. Powered by GROQ and LLaMA3 integration.
 
 ---
 
@@ -10,44 +10,44 @@ AI destekli bir metin özetleme platformu. Öğrenciler, araştırmacılar ve i�
 
 ---
 
-## 🔍 Özellikler
+## 🔍 Features
 
-- ✂️ **Uzun Metinlerden Akıllı Özetler**
-- 🤖 **Groq + LLaMA3 ile Yapay Zeka Destekli Özetleme**
-- 🧩 **Konu Başlığı Çıkarma**
-- 🗂️ **Anahtar Kelime Belirleme**
-- ❓ **Otomatik Quiz Soruları Oluşturma**
-- 👨‍🏫 **Kullanıcı Tarafından Girilen Özetin Kalitesini Değerlendirme**
-- 🔄 **Çoklu Özetleme Formatları (Basit, Akademik, Madde Madde)**
-- 🧠 **Karşılaştırmalı Özetleme (AI vs Kullanıcı)**
+- ✂️ **Smart Summaries from Long Texts**
+- 🤖 **AI-Powered Summarization with Groq + LLaMA3**
+- 🧩 **Topic Extraction**
+- 🗂️ **Keyword Identification**
+- ❓ **Automatic Quiz Question Generation**
+- 👨‍🏫 **Evaluation of User-Submitted Summary Quality**
+- 🔄 **Multiple Summary Formats (Simple, Academic, Bullet Points)**
+- 🧠 **Comparative Summarization (AI vs. User)**
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
+## 🛠️ Tech Stack
 
 - **Next.js 15**
 - **TypeScript**
 - **TailwindCSS**
-- **Groq API** – LLaMA 3 ile özet üretimi
+- **Groq API** – Summary generation with LLaMA 3
 - **Vercel** – Hosting
 
 ---
 
-## ⚙️ Kurulum
+## ⚙️ Setup
 
-Projeyi kendi cihazınızda çalıştırmak için:
+To run the project on your own machine:
 
 ```bash
 git clone https://github.com/CodeCults/Auto-Summarizer.git
 cd Auto-Summarizer
 npm install
-cp .env.example .env.local # gerekli API key'leri buraya girin
+cp .env.example .env.local # enter the necessary API keys here
 npm run dev
 ```
 
-### 📁 .env.local Dosyası
+### 📁 .env.local File
 ```env
 GROQ_API_KEY=your_groq_api_key_here
 ```
-### 🧑‍💻 Geliştirici
+### 🧑‍💻 Developer
 CodeCults – github.com/CodeCults
